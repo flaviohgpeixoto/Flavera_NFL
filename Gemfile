@@ -31,6 +31,17 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+# Awesome Print is a Ruby library that pretty prints Ruby objects in full color exposing their internal structure with proper indentation.
+gem 'awesome_print'
+
+# Devise is a flexible authentication solution for Rails based on Warden.
+gem 'devise'
+# Simple, multi-client and secure token-based authentication for Rails.
+gem 'devise_token_auth'
+
+# Roo implements read access for all common spreadsheet types.
+gem "roo", "~> 2.8.0"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
