@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_User, only: %i[show update destroy]
+  before_action :set_user, only: %i[show update destroy]
 
   ##
   # Get Users based on search
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   private
 
     ##
-    # Set @user 
+    # Set @user
     #
 
     def set_user
