@@ -6,4 +6,10 @@ class Admin < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable
   include DeviseTokenAuth::Concerns::User
+
+  ##
+  #Validations
+  #
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: :true
 end

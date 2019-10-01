@@ -11,5 +11,12 @@ class User < ActiveRecord::Base
   has_many :leagues, through: :tripples
   has_many :teams, through: :tripples
 
+  ##
+  #Validations
+  #
+  validates :name, presence: true
+  validates :nickname, presence: true, uniqueness: :true
+  validates :email, presence: true, uniqueness: :true
+
 
 end

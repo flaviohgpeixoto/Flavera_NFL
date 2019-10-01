@@ -5,5 +5,11 @@ Rails.application.routes.draw do
   as :admin do
     # Define routes for Admin within this block.
   end
+
+  resources :players
+  resources :teams
+  resources :leagues
+  resources :users
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
