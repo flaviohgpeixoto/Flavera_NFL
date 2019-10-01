@@ -13,7 +13,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -30,6 +30,19 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
+
+# Awesome Print is a Ruby library that pretty prints Ruby objects in full color exposing their internal structure with proper indentation.
+gem 'awesome_print'
+
+# Devise is a flexible authentication solution for Rails based on Warden.
+gem 'devise'
+# Simple, multi-client and secure token-based authentication for Rails.
+gem 'devise_token_auth'
+
+# Roo implements read access for all common spreadsheet types.
+gem "roo", "~> 2.8.0"
+
+gem 'pry'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
