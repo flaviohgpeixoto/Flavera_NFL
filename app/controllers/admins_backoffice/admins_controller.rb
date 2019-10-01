@@ -1,4 +1,4 @@
-class AdminsController < ApplicationController
+class AdminsBackoffice::AdminsController < AdminsBackofficeController
   before_action :set_admin, only: %i[show update destroy]
 
   ##

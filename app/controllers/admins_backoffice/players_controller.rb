@@ -1,4 +1,4 @@
-class PlayersController < ApplicationController
+class AdminsBackoffice::PlayersController < AdminsBackofficeController
   before_action :set_player, only: %i[show update destroy]
 
   ##
