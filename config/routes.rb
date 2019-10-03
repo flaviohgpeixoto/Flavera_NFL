@@ -6,15 +6,12 @@ Rails.application.routes.draw do
     # Define routes for Admin within this block.
   end
 
-  namespace :admins_backoffice do
-    resources :players
-    resources :admins
-  end
-
-  
+  resources :players
+  resources :admins
   resources :teams
   resources :leagues
   resources :users
+  resources :tripples
   
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

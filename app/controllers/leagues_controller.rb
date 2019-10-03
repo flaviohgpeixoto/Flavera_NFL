@@ -1,5 +1,6 @@
 class LeaguesController < ApplicationController
-  before_action :set_League, only: %i[show update destroy]
+  before_action :authenticate_user!
+  before_action :set_league, only: %i[show update destroy]
 
   ##
   # Get Leagues based on search
@@ -14,6 +15,7 @@ class LeaguesController < ApplicationController
   def create
     @league = League.new(league_params)
     if @league.save
+      Tripple.create!(user_id: current_user.id, league_id: @league, role: :owner)
       render "show"
     else
       render json: @league.errors
