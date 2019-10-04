@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_player, only: %i[show update destroy]
 
   ##
@@ -30,6 +31,7 @@ class PlayersController < ApplicationController
   # Update a Player
   #
   def update
+    # authorize @player
     if @player.update(player_params)
       render :show
     else

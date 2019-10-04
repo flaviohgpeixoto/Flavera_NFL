@@ -34,16 +34,16 @@ class ApplicationPolicy
     false
   end
 
-  class Scope
-    attr_reader :user, :scope
+  # class Scope
+  #   attr_reader :user, :scope
 
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
+  #   def initialize(user, scope)
+  #     @user = user
+  #     @scope = scope
+  #   end
 
-    def resolve
-      scope.all
-    end
-  end
+  #   def resolve
+  #     scope.all
+  #   end
+  # end
 end
