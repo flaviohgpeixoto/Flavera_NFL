@@ -7,6 +7,7 @@ class PlayersController < ApplicationController
   #
   def index
     @players = Player.all
+    authorize @players
   end
 
   ##
@@ -14,6 +15,7 @@ class PlayersController < ApplicationController
   #
   def create
     @player = Player.new(player_params)
+    authorize @player
     if @player.save
       render "show"
     else
@@ -25,13 +27,14 @@ class PlayersController < ApplicationController
   # Display Player information
   #
   def show
+    authorize @player
   end
 
   ##
   # Update a Player
   #
   def update
-    # authorize @player
+    authorize @player
     if @player.update(player_params)
       render :show
     else
@@ -39,10 +42,11 @@ class PlayersController < ApplicationController
     end
   end
 
-  ## 
+  ##
   # Destroy the Player Record
   #
   def destroy
+    authorize @player
     @player.destroy
     @destroy_message = "Success deleted!"
     render :show
@@ -53,7 +57,6 @@ class PlayersController < ApplicationController
     ##
     # Set @player 
     #
-
     def set_player
       @player = Player.find(params[:id])
     end
