@@ -5,7 +5,7 @@ class Tripple < ApplicationRecord
 
   enum role: %i(std owner)
 
-  validade :team_needed?
+  validate :team_needed?
 
   def team_needed?
     if self.role == :std

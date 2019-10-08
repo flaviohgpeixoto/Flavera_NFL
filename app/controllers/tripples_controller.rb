@@ -1,5 +1,5 @@
 class TripplesController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_tripple, only: %i[show update destroy]
 
   ##
