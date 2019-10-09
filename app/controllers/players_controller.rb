@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+##
+# This controller manage CRUD for Players. It uses policies to define users' authorization
+#
 class PlayersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_player, only: %i[show update destroy]
@@ -17,7 +22,7 @@ class PlayersController < ApplicationController
     @player = Player.new(player_params)
     authorize @player
     if @player.save
-      render "show"
+      render 'show'
     else
       render json: @player.errors
     end
@@ -48,23 +53,23 @@ class PlayersController < ApplicationController
   def destroy
     authorize @player
     @player.destroy
-    @destroy_message = "Success deleted!"
+    @destroy_message = 'Success deleted!'
     render :show
   end
 
   private
 
-    ##
-    # Set @player 
-    #
-    def set_player
-      @player = Player.find(params[:id])
-    end
+  ##
+  # Set @player
+  #
+  def set_player
+    @player = Player.find(params[:id])
+  end
 
-    ##
-    # Set params to a @player
-    #
-    def player_params
-      params.fetch(:player).permit(:name, :position, :team_id)
-    end
+  ##
+  # Set params to a @player
+  #
+  def player_params
+    params.fetch(:player).permit(:name, :position, :team_id)
+  end
 end

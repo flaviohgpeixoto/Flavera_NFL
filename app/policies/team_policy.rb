@@ -16,6 +16,6 @@ class TeamPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user_admin? 
+    user_admin?
   end
 end

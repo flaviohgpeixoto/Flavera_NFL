@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+##
+# This controller manage CRUD for Teams. It uses policies to define users' authorization
+#
 class TeamsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_team, only: %i[show update destroy]
@@ -7,6 +12,7 @@ class TeamsController < ApplicationController
   #
   def index
     @teams = Team.all
+    authorize @teams
   end
 
   ##
@@ -14,8 +20,9 @@ class TeamsController < ApplicationController
   #
   def create
     @team = Team.new(team_params)
+    authorize @team
     if @team.save
-      render "show"
+      render 'show'
     else
       render json: @team.errors
     end
@@ -25,12 +32,14 @@ class TeamsController < ApplicationController
   # Display Team information
   #
   def show
+    authorize @team
   end
 
   ##
   # Update a Team
   #
   def update
+    authorize @team
     if @team.update(team_params)
       render :show
     else
@@ -38,30 +47,29 @@ class TeamsController < ApplicationController
     end
   end
 
-  ## 
+  ##
   # Destroy the Team Record
   #
   def destroy
+    authorize @team
     @team.destroy
-    @destroy_message = "Success deleted!"
+    @destroy_message = 'Success deleted!'
     render :show
   end
 
   private
 
-    ##
-    # Set @team 
-    #
+  ##
+  # Set @team
+  #
+  def set_team
+    @team = Team.find(params[:id])
+  end
 
-    def set_team
-      @team = Team.find(params[:id])
-    end
-
-    ##
-    # Set params to a @team
-    #
-    def team_params
-      params.fetch(:team).permit(:name)
-    end
+  ##
+  # Set params to a @team
+  #
+  def team_params
+    params.fetch(:team).permit(:name)
+  end
 end
-
