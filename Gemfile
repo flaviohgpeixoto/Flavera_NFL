@@ -42,7 +42,7 @@ gem 'devise_token_auth'
 # Roo implements read access for all common spreadsheet types.
 gem 'roo', '~> 2.8.0'
 
-# Pundit provides a set of helpers which guide you in leveraging regular Ruby classes 
+# Pundit provides a set of helpers which guide you in leveraging regular Ruby classes
 # and object oriented design patterns to build a simple, robust and scalable authorization system.
 gem 'pundit'
 

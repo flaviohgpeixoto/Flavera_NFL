@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.player do
   json.msg @destroy_message if @destroy_message.present?
   json.id @player.id

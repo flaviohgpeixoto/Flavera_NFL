@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.user do
   json.msg @destroy_message if @destroy_message.present?
   json.id @user.id

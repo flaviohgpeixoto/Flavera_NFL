@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+##
+# Master Policy - Original from Gem Pundit.
+#
 class ApplicationPolicy
   attr_reader :user, :record
 
@@ -34,6 +39,9 @@ class ApplicationPolicy
     false
   end
 
+  ##
+  # Master Policy - Original from Gem Pundit.
+  #
   class Scope
     attr_reader :user, :scope
 
@@ -62,5 +70,4 @@ class ApplicationPolicy
   def user_admin?
     user.present? && user.admin?
   end
-  
 end

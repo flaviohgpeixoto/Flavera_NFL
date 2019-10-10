@@ -1,4 +1,12 @@
+# frozen_string_literal: true
+
+##
+# Policies for Team controller
+#
 class TeamPolicy < ApplicationPolicy
+  ##
+  # "user_present?" and "user_admin?" defined in ApplicationPolicy.
+  #
   def index?
     user_present?
   end

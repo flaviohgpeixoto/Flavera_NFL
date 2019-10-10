@@ -1,4 +1,12 @@
+# frozen_string_literal: true
+
+##
+# Policies for Tripple controller
+#
 class TripplePolicy < ApplicationPolicy
+  ##
+  # "user_present?" and "user_admin?" defined in ApplicationPolicy.
+  #
   def index?
     user_present?
   end
@@ -19,9 +27,12 @@ class TripplePolicy < ApplicationPolicy
     user_admin? || user_owner?
   end
 
-  private 
+  private
 
+  ##
+  # The user must be present and they must be the owner of league.
+  #
   def user_owner?
     user_present? && Tripple.find_by(user_id: user.id, league_id: record.id, role: :owner).present?
-  end  
+  end
 end

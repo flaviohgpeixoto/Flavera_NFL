@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+##
+# Table for Tripples.
+#
 class CreateTripples < ActiveRecord::Migration[5.2]
   def change
     create_table :tripples do |t|

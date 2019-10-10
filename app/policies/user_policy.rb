@@ -1,5 +1,12 @@
+# frozen_string_literal: true
+
+##
+# Policies for Tripple controller
+#
 class UserPolicy < ApplicationPolicy
-  
+  ##
+  # "user_present?" and "user_admin?" defined in ApplicationPolicy.
+  #
   def index?
     user_present?
   end
@@ -19,10 +26,13 @@ class UserPolicy < ApplicationPolicy
   def destroy?
     user_admin?
   end
-  
-  private 
 
+  private
+
+  ##
+  # The user just can update info of your own profile.
+  #
   def user_self?
     user_present? && user.id == record.id
-  end  
+  end
 end

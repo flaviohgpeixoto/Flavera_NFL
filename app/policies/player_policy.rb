@@ -1,5 +1,12 @@
+# frozen_string_literal: true
+
+##
+# Policies for Player controller
+#
 class PlayerPolicy < ApplicationPolicy
-  
+  ##
+  # "user_present?" and "user_admin?" defined in ApplicationPolicy.
+  #
   def index?
     user_present?
   end
@@ -19,5 +26,4 @@ class PlayerPolicy < ApplicationPolicy
   def destroy?
     user_admin?
   end
-  
 end
