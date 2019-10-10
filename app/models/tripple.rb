@@ -1,29 +1,34 @@
 # frozen_string_literal: true
 
 ##
-# Model Tripple
+# Relation between users, leagues and teams.
 #
 class Tripple < ApplicationRecord
-  ##
-  # Setting relations between models.
   #
+  # Associations
+  #
+
   belongs_to :league
   belongs_to :team, optional: true
   belongs_to :user
 
-  ##
-  # Enumerating role positions for user who creates a league.
   #
+  # Enumerators
+  #
+
   enum role: %i[std owner]
 
-  ##
-  # Verifying if user has a team on a league.
   #
+  # Validations
+  #
+
   validate :team_needed?
 
+  ##
+  # If the user is not the owner of the league, it should have a team
+  #
+
   def team_needed?
-    if self.role == :std
-      self.errors.add('User must select a team.')
-    end
+    errors.add(:base, 'User must select a team.') if std?
   end
 end

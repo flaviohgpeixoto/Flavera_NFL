@@ -1,30 +1,33 @@
 # frozen_string_literal: true
 
 ##
-# Model Player
+# Relation between players and teams
 #
 class Player < ApplicationRecord
-  ##
-  # Setting relations between models
   #
+  # Associations
+  #
+
   belongs_to :team, optional: true
 
-  ##
-  # Validates - name - mandatory
   #
-  validates :name, presence: true
+  # Validations
+  #
 
-  ##
-  # Offence positions, kicker and defense - Standard fantasy league positions
+  validates :name, presence: true
+  before_save :manage_players_on_team
+
   #
+  # Enumerators
+  #
+
   enum positions: %i[QB RB WR TE K DST]
 
   ##
-  # Verifying numbers of player on a team
+  # Teams should have 53 player at maximun.
   #
-  before_save :manage_players_on_team
 
   def manage_players_on_team
-    self.errors.add :team, 'This team has 53 players.' if team&.players&.count >= 53
+    errors.add(:team, 'This team has 53 players.') if team.players.count >= 53
   end
 end

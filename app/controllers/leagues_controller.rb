@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ##
-# This controller manage CRUD for Leagues. It uses policies to define users' authorization
+# Manages CRUD for Leagues. It uses policies to define users' authorization
 #
 class LeaguesController < ApplicationController
   before_action :authenticate_user!

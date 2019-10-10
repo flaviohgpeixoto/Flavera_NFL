@@ -1,27 +1,29 @@
 # frozen_string_literal: true
 
 ##
-# Model League
+# Relation between users, tripples and teams
 #
 class League < ApplicationRecord
-  ##
-  # Setting relations between models
   #
+  # Associations
+  #
+
   has_many :tripples
   has_many :teams, through: :tripples
   has_many :users, through: :tripples
 
-  ##
-  # Validates - name - mandatory and unique
   #
-  validates :name, presence: true, uniqueness: true
+  # Validations
+  #
 
-  ##
-  # Verifying numbers of team in a league
-  #
+  validates :name, presence: true, uniqueness: true
   validate :check_teams_on_league, on: :update
 
+  ##
+  # Leagues should have 32 teams before start.
+  #
+
   def check_teams_on_league
-    self.errors.add :teams, message: 'League must have 32 teams!' if teams.count != 32
+    errors.add :teams, message: 'League must have 32 teams!' if teams.count != 32
   end
 end

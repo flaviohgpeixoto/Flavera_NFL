@@ -1,28 +1,30 @@
 # frozen_string_literal: true
 
 ##
-# Model Team
+# Relation between users, leagues and tripples
 #
 class Team < ApplicationRecord
-  ##
-  # Setting relations between models
   #
+  # Associations
+  #
+
   has_many :tripples
   has_many :players
   has_many :leagues, through: :tripples
   has_many :users, through: :tripples
 
-  ##
-  # Validates - name - mandatory and unique
   #
+  # Validations
+  #
+
   validates :name, presence: true, uniqueness: true
+  validate :check_max_players, on: :update
 
   ##
   # Verifying numbers of player on a team
   #
-  validate :check_max_players, on: :update
 
   def check_max_players
-    self.errors[:players] = 'Team must have 53 players maximum.' if players.count >= 53
+    errors.add(:players, 'Team must have 53 players maximum.') if players.count >= 53
   end
 end
