@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+##
+# Table for Teams.
+#
 class CreateTeams < ActiveRecord::Migration[5.2]
   def change
     create_table :teams do |t|

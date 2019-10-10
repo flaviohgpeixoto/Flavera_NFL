@@ -40,9 +40,11 @@ gem 'devise'
 gem 'devise_token_auth'
 
 # Roo implements read access for all common spreadsheet types.
-gem "roo", "~> 2.8.0"
+gem 'roo', '~> 2.8.0'
 
-gem 'pry'
+# Pundit provides a set of helpers which guide you in leveraging regular Ruby classes
+# and object oriented design patterns to build a simple, robust and scalable authorization system.
+gem 'pundit'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -54,6 +56,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+# A Ruby static code analyzer and formatter, based on the community Ruby style guide.
+  gem 'rubocop', require: false
+
+# Avoid repeating yourself, use pry-rails instead of copying the initializer to every rails project.
+  gem 'pry'
+  
 end
 
 
